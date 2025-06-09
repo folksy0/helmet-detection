@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyTorch
+*.pth
+*.pt
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Model outputs (keep only best.pt)
+runs/detect/train/weights/last.pt
+runs/detect/train/weights/epoch*.pt
+
+# Dataset backups
+*.zip
+*.tar.gz
+
+# Output images
+output_*.jpg
+output_*.png
+result_*.jpg
+result_*.png
