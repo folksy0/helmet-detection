@@ -14,7 +14,7 @@ import cv2
 import numpy as np
 from PIL import Image
 import base64
-import io
+import io   
 import time
 from ultralytics import YOLO
 import threading
