@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ Helmet Detection Dashboard - Professional Monitoring System</title>
+    
+    <link rel="shortcut icon" href="./static/assets/compiled/svg/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC" type="image/png">
+    
+    <link rel="stylesheet" href="./static/assets/compiled/css/app.css">
+    <link rel="stylesheet" href="./static/assets/compiled/css/app-dark.css">
+    <link rel="stylesheet" href="./static/assets/compiled/css/iconly.css">
+    
+    <!-- Custom styles for helmet detection -->
+    <style>
+        .helmet-detection-card {
+            border: 2px solid #10b981;
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+        }
+        
+        .webcam-card {
+            border: 2px solid #3b82f6;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+        }
+        
+        .stats-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .fps-display {
+            background: linear-gradient(90deg, #059669, #10b981);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: #991b1b;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        
+        .alert-success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #065f46;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        
+        .detection-result {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .webcam-stream {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .upload-area {
+            border: 2px dashed #10b981;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(16, 185, 129, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: #059669;
+        }
+        
+        .upload-area.dragover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #047857;
+        }
+        
+        .btn-helmet {
+            background: linear-gradient(45deg, #10b981, #059669);
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-helmet:hover {
+            background: linear-gradient(45deg, #059669, #047857);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-webcam {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-webcam:hover {
+            background: linear-gradient(45deg, #2563eb, #1d4ed8);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .performance-badge {
+            background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #10b981;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="static/assets/static/js/initTheme.js"></script>
+    <div id="app">
+        <div id="sidebar">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header position-relative">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="logo">
+                            <a href="/"><img src="./static/assets/compiled/svg/logo.svg" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                                role="img" class="iconify iconify--system-uicons" width="20" height="20"
+                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
+                                <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2"
+                                        opacity=".3"></path>
+                                    <g transform="translate(-210 -1)">
+                                        <path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path>
+                                        <circle cx="220.5" cy="11.5" r="4"></circle>
+                                        <path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <div class="form-check form-switch fs-6">
+                                <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
+                                <label class="form-check-label"></label>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                                role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3l3.19.09m3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95l2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31Z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="sidebar-toggler x">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">🛡️ Helmet Detection</li>
+                        
+                        <li class="sidebar-item active">
+                            <a href="/" class='sidebar-link'>
+                                <i class="bi bi-shield-check"></i>
+                                <span>Detection Dashboard</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-item">
+                            <a href="#image-detection" class='sidebar-link'>
+                                <i class="bi bi-image"></i>
+                                <span>Image Analysis</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-item">
+                            <a href="#webcam-detection" class='sidebar-link'>
+                                <i class="bi bi-camera-video"></i>
+                                <span>Live Webcam</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-title">📊 Analytics</li>
+                        
+                        <li class="sidebar-item">
+                            <a href="#statistics" class='sidebar-link'>
+                                <i class="bi bi-graph-up"></i>
+                                <span>Detection Stats</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-item">
+                            <a href="#performance" class='sidebar-link'>
+                                <i class="bi bi-speedometer2"></i>
+                                <span>Performance</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-title">ℹ️ Information</li>
+                        
+                        <li class="sidebar-item">
+                            <a href="#safety-tips" class='sidebar-link'>
+                                <i class="bi bi-info-circle"></i>
+                                <span>Safety Guidelines</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+            
+            <div class="page-heading">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3>🛡️ Professional Helmet Detection System</h3>
+                        <p class="text-subtitle text-muted">Real-time safety monitoring with AI-powered detection</p>
+                    </div>
+                    <div>
+                        <span class="performance-badge">Ultra-Fast Mode</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page-content">
+                <!-- Statistics Section -->
+                <section class="row" id="statistics">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card stats-card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon green mb-2">
+                                            <i class="iconly-boldShield-Done"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">With Helmet</h6>
+                                        <h6 class="font-extrabold mb-0" id="helmet-count">0</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card stats-card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon red mb-2">
+                                            <i class="iconly-boldDanger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Without Helmet</h6>
+                                        <h6 class="font-extrabold mb-0" id="no-helmet-count">0</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card stats-card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon blue mb-2">
+                                            <i class="iconly-boldChart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Total Detected</h6>
+                                        <h6 class="font-extrabold mb-0" id="total-count">0</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card stats-card">
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                        <div class="stats-icon purple mb-2">
+                                            <i class="iconly-boldActivity"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="text-muted font-semibold">Performance FPS</h6>
+                                        <h6 class="font-extrabold mb-0" id="fps-display">0.0</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Detection Interfaces -->
+                <section class="row">
+                    <!-- Image Detection -->
+                    <div class="col-12 col-lg-6">
+                        <div class="card helmet-detection-card" id="image-detection">
+                            <div class="card-header">
+                                <h4 class="card-title">📤 High-Accuracy Image Detection</h4>
+                                <p class="text-muted">Upload images for detailed helmet detection analysis</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="upload-area" onclick="document.getElementById('imageInput').click()">
+                                    <div class="upload-content">
+                                        <i class="bi bi-cloud-upload" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;"></i>
+                                        <h5>Click to upload or drag & drop</h5>
+                                        <p class="text-muted">Supports JPG, PNG files</p>
+                                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 text-center">
+                                    <button class="btn btn-helmet" onclick="processImage()">
+                                        <div class="loading-spinner" id="imageSpinner"></div>
+                                        <span id="imageButtonText">🔍 Analyze Image</span>
+                                    </button>
+                                </div>
+                                
+                                <div id="imageResults" class="mt-4" style="display: none;">
+                                    <div id="imageAlerts"></div>
+                                    <img id="resultImage" class="detection-result" alt="Detection Result">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Webcam Detection -->
+                    <div class="col-12 col-lg-6">
+                        <div class="card webcam-card" id="webcam-detection">
+                            <div class="card-header">
+                                <h4 class="card-title">🎥 Ultra-Fast Live Detection</h4>
+                                <p class="text-muted">Real-time webcam monitoring (30+ FPS)</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="fps-display text-center mb-3" id="fpsDisplay">
+                                    🔴 FPS: 0.0 / Target: 30+
+                                </div>
+                                
+                                <div class="text-center mb-3">
+                                    <button class="btn btn-webcam me-2" onclick="startWebcam()">
+                                        🚀 Start Webcam
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="stopWebcam()">
+                                        ⏹️ Stop
+                                    </button>
+                                </div>
+                                
+                                <div class="webcam-container text-center">
+                                    <img id="webcamStream" class="webcam-stream" 
+                                         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Y4ZjlmYSIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IiM2Yjc0ODEiPldlYmNhbSBGZWVkPC90ZXh0Pgo8L3N2Zz4K"
+                                         alt="Webcam Stream" style="display: none;">
+                                    <div id="webcamPlaceholder" class="text-center p-5" style="background: #f8f9fa; border-radius: 8px;">
+                                        <i class="bi bi-camera-video" style="font-size: 4rem; color: #6b7280; margin-bottom: 1rem;"></i>
+                                        <h5 class="text-muted">Click "Start Webcam" to begin detection</h5>
+                                    </div>
+                                </div>
+                                
+                                <div id="webcamAlerts" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance & Tips Section -->
+                <section class="row mt-4" id="performance">
+                    <div class="col-12 col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>🎯 Performance Optimization Tips</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-primary mb-3">🚀 For Maximum FPS:</h6>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">✅ <strong>Good Lighting</strong> - Helps faster detection</li>
+                                            <li class="mb-2">✅ <strong>Optimal Distance</strong> - 1-3 meters from camera</li>
+                                            <li class="mb-2">✅ <strong>Simple Background</strong> - Reduces processing noise</li>
+                                            <li class="mb-2">✅ <strong>Close Other Apps</strong> - Free up CPU/memory</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-info mb-3">🔧 Current Settings:</h6>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">📐 <strong>Webcam Resolution:</strong> 640x480</li>
+                                            <li class="mb-2">⚡ <strong>Detection Size:</strong> 320px (ultra-optimized)</li>
+                                            <li class="mb-2">🎯 <strong>Confidence Threshold:</strong> 70%</li>
+                                            <li class="mb-2">📱 <strong>Processing:</strong> CPU optimized</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-4" id="safety-tips">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>🚦 Safety Reminders</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-warning">
+                                    <h6 class="mb-2">⚠️ Important Guidelines:</h6>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2">🛡️ Always use SNI standard helmets</li>
+                                        <li class="mb-2">🔗 Ensure helmet straps are secured</li>
+                                        <li class="mb-2">👨‍👩‍👧‍👦 Safety first - family is waiting at home</li>
+                                        <li class="mb-2">🏍️ Check helmet before every ride</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-outline-primary btn-sm" onclick="resetStats()">
+                                        🔄 Reset Statistics
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2025 &copy; Helmet Detection System v4.0</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Developed by <span class="text-primary"><i class="bi bi-heart-fill icon-mid"></i></span>
+                            <strong>Muhammad Zein</strong></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="static/assets/static/js/components/dark.js"></script>
+    <script src="static/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="static/assets/compiled/js/app.js"></script>
+
+    <!-- Custom JavaScript for Helmet Detection -->
+    <script>
+        let webcamActive = false;
+        let statsInterval = null;
+        let totalSessions = {helmet: 0, noHelmet: 0, total: 0};
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            setupDragAndDrop();
+            updateStats(0, 0, 0, 0);
+        });
+
+        // Drag and drop functionality
+        function setupDragAndDrop() {
+            const uploadArea = document.querySelector('.upload-area');
+            
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    document.getElementById('imageInput').files = files;
+                    processImage();
+                }
+            });
+        }
+
+        // Process uploaded image
+        async function processImage() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select an image first');
+                return;
+            }
+            
+            // Show loading state
+            const spinner = document.getElementById('imageSpinner');
+            const buttonText = document.getElementById('imageButtonText');
+            spinner.style.display = 'inline-block';
+            buttonText.textContent = 'Analyzing...';
+            
+            const formData = new FormData();
+            formData.append('image', file);
+            
+            try {
+                const response = await fetch('/upload_image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Display result image
+                    const resultImage = document.getElementById('resultImage');
+                    resultImage.src = result.image;
+                    document.getElementById('imageResults').style.display = 'block';
+                    
+                    // Show alerts
+                    showImageAlerts(result.stats);
+                    
+                    // Update global stats
+                    totalSessions.helmet += result.stats.helmet;
+                    totalSessions.noHelmet += result.stats.no_helmet;
+                    totalSessions.total += result.stats.total;
+                    updateStats(totalSessions.helmet, totalSessions.noHelmet, totalSessions.total, 0);
+                    
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (error) {
+                alert('Error processing image: ' + error.message);
+            } finally {
+                // Hide loading state
+                spinner.style.display = 'none';
+                buttonText.textContent = '🔍 Analyze Image';
+            }
+        }
+
+        // Show image detection alerts
+        function showImageAlerts(stats) {
+            const alertsDiv = document.getElementById('imageAlerts');
+            let alertsHtml = '';
+            
+            if (stats.no_helmet > 0) {
+                alertsHtml += `<div class="alert-danger">⚠️ ${stats.no_helmet} person(s) detected without helmet!</div>`;
+            }
+            
+            if (stats.helmet > 0) {
+                alertsHtml += `<div class="alert-success">✅ ${stats.helmet} person(s) detected wearing helmet.</div>`;
+            }
+            
+            if (stats.total === 0) {
+                alertsHtml += `<div class="alert alert-info">ℹ️ No persons detected in the image.</div>`;
+            }
+            
+            alertsDiv.innerHTML = alertsHtml;
+        }
+
+        // Start webcam detection
+        async function startWebcam() {
+            try {
+                const response = await fetch('/start_webcam');
+                const result = await response.json();
+                
+                if (result.success) {
+                    webcamActive = true;
+                    document.getElementById('webcamStream').style.display = 'block';
+                    document.getElementById('webcamPlaceholder').style.display = 'none';
+                    document.getElementById('webcamStream').src = '/webcam_feed?' + new Date().getTime();
+                    
+                    // Start stats polling
+                    statsInterval = setInterval(updateWebcamStats, 1000);
+                    
+                    showWebcamAlert('✅ Webcam started successfully!', 'success');
+                } else {
+                    alert('Error starting webcam: ' + result.error);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Stop webcam detection
+        async function stopWebcam() {
+            try {
+                const response = await fetch('/stop_webcam');
+                const result = await response.json();
+                
+                if (result.success) {
+                    webcamActive = false;
+                    document.getElementById('webcamStream').style.display = 'none';
+                    document.getElementById('webcamPlaceholder').style.display = 'block';
+                    
+                    // Stop stats polling
+                    if (statsInterval) {
+                        clearInterval(statsInterval);
+                        statsInterval = null;
+                    }
+                    
+                    showWebcamAlert('⏹️ Webcam stopped.', 'info');
+                    updateFpsDisplay(0);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Update webcam stats
+        async function updateWebcamStats() {
+            if (!webcamActive) return;
+            
+            try {
+                const response = await fetch('/webcam_stats');
+                const stats = await response.json();
+                
+                // Update FPS
+                updateFpsDisplay(stats.fps);
+                
+                // Update global session stats
+                totalSessions.helmet += stats.helmet;
+                totalSessions.noHelmet += stats.no_helmet;
+                totalSessions.total += stats.total;
+                
+                updateStats(totalSessions.helmet, totalSessions.noHelmet, totalSessions.total, stats.fps);
+                
+                // Show warnings if needed
+                if (stats.no_helmet > 0) {
+                    showWebcamAlert('⚠️ Warning: Person detected without helmet!', 'danger');
+                } else if (stats.helmet > 0) {
+                    showWebcamAlert('✅ All persons detected wearing helmets.', 'success');
+                }
+                
+            } catch (error) {
+                console.error('Error fetching webcam stats:', error);
+            }
+        }
+
+        // Update FPS display
+        function updateFpsDisplay(fps) {
+            const fpsElement = document.getElementById('fpsDisplay');
+            const fpsDisplayElement = document.getElementById('fps-display');
+            
+            let color = '🔴';
+            if (fps >= 25) color = '🟢';
+            else if (fps >= 15) color = '🟡';
+            
+            fpsElement.innerHTML = `${color} FPS: ${fps.toFixed(1)} / Target: 30+`;
+            fpsDisplayElement.textContent = fps.toFixed(1);
+        }
+
+        // Show webcam alerts
+        function showWebcamAlert(message, type) {
+            const alertsDiv = document.getElementById('webcamAlerts');
+            const alertClass = type === 'danger' ? 'alert-danger' : 
+                              type === 'success' ? 'alert-success' : 
+                              'alert alert-info';
+            
+            alertsDiv.innerHTML = `<div class="${alertClass}">${message}</div>`;
+            
+            // Auto-clear after 3 seconds
+            setTimeout(() => {
+                alertsDiv.innerHTML = '';
+            }, 3000);
+        }
+
+        // Update statistics display
+        function updateStats(helmet, noHelmet, total, fps) {
+            document.getElementById('helmet-count').textContent = helmet;
+            document.getElementById('no-helmet-count').textContent = noHelmet;
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('fps-display').textContent = fps.toFixed(1);
+        }
+
+        // Reset statistics
+        function resetStats() {
+            if (confirm('Are you sure you want to reset all statistics?')) {
+                totalSessions = {helmet: 0, noHelmet: 0, total: 0};
+                updateStats(0, 0, 0, 0);
+                document.getElementById('imageAlerts').innerHTML = '';
+                document.getElementById('webcamAlerts').innerHTML = '';
+                document.getElementById('imageResults').style.display = 'none';
+                
+                // Show confirmation
+                showWebcamAlert('📊 Statistics reset successfully!', 'info');
+            }
+        }
+
+        // Handle file input change
+        document.getElementById('imageInput').addEventListener('change', function() {
+            if (this.files[0]) {
+                processImage();
+            }
+        });
+
+        // Smooth scrolling for sidebar links
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
